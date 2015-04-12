@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidTetris</string>
+    <string name="Pause">Pause</string>
+    <string name="Resume">Resume</string>
+    <string name="Restart">Restart</string>
+    <string name="Next">Next:</string>
+    <string name="Score">Score:</string>
+    <string name="Quit">Quit</string>
+    <string name="GameOver">Game Over!</string>
+    <string name="Lost">There is no more room for the new piece, you have lost.</string>
+    <string name="Replay">Replay?</string>
+    <string name="QuitG">Quit Game?</string>
+    <string name="TopScores">Top Scores:</string>
+    <string name="Gratz">Congratulations!</string>
+    <string name="Win">Your score has made it to the top score</string>
+    <string name="SaveS">Save score?</string>
+    <string name="Cancel">Cancel</string>
+</resources>
