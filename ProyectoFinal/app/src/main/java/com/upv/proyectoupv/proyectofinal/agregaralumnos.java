@@ -33,39 +33,23 @@ import java.util.ArrayList;
 
 public class agregaralumnos extends Activity {
     private ProgressDialog pDialog;
-    ArrayList<String> worldlist;
-    ArrayList<WorldPopulation> world;
-    String id_grupo;
-    String nombre;
-    InputStream is=null;
-    String result=null;
-    String line=null;
     int code;
- String get_grupos;
-    ListView list_grupos;
     public EditText nom_estudiante;
     public EditText matricula;
     Button insert;
-    JSONObject jsonobject;
-    JSONArray jsonarray;
-    ProgressDialog mProgressDialog;
-
+    InputStream is ;
+    String line ;
+    String result;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.agregaralumnos);
-
-        ///////////////////SELECCION DE DATOS///////////
-       new Selectgrupos().execute();
-
-        //////////////////////////////////////////////////
 
 
 
        // final EditText e_id=(EditText) findViewById(R.id.editText1);
         nom_estudiante = (EditText)findViewById(R.id.nom_estudiante);
         matricula = (EditText)findViewById(R.id.matricula);
-        list_grupos = (ListView)findViewById(R.id.list_grupos);
         insert=(Button) findViewById(R.id.button1);
         //new select().execute();
         insert.setOnClickListener(new View.OnClickListener() {
@@ -86,115 +70,7 @@ public class agregaralumnos extends Activity {
 
     }
 
-    public class Selectgrupos extends AsyncTask<Void, Void, Void> {
-        String id;
-        InputStream is = null;
 
-        @Override
-        protected Void doInBackground(Void... params) {
-
-            // Create an array to populate the spinner
-            world = new ArrayList<WorldPopulation>();
-            worldlist = new ArrayList<String>();
-            // JSON file URL address
-            jsonobject = JSONfunctions
-                    .getJSONfromURL("http://192.168.2.9/proyectofinal/selectgrupos.php");
-            //jsonobject = JSONfunctions.getJSONfromURL("http://192.168.1.64/proyectofinal/selectgrupos.php");
-            //System.out.println(jsonobject);
-            //JSONArray gruposarray = new JSONArray();
-
-            try {
-
-                jsonarray = jsonobject.getJSONArray("grupos");
-                for (int i = 0; i < jsonarray.length(); i++) {
-                    jsonobject = jsonarray.getJSONObject(i);
-
-                    WorldPopulation worldpop = new WorldPopulation();
-
-                    //worldpop.setid(jsonobject.optString("id"));
-                    worldpop.setgrupo(jsonobject.optString("nombre"));
-
-                    world.add(worldpop);
-
-                    // Populate spinner with country names
-                    worldlist.add(jsonobject.optString("nombre"));
-
-                }
-
-
-            } catch (Exception e) {
-                Looper.prepare();
-                Log.e("Fallo al cargar informacion", e.toString());
-                Toast.makeText(getApplicationContext(), "No cargo informacion",
-                        Toast.LENGTH_LONG).show();
-                Looper.loop();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void args) {
-            // Locate the spinner in activity_main.xml
-            Spinner mySpinner = (Spinner) findViewById(R.id.my_spinner);
-
-            // Spinner adapter
-            mySpinner
-                    .setAdapter(new ArrayAdapter<String>(agregaralumnos.this,
-                            android.R.layout.simple_spinner_dropdown_item,
-                            worldlist));
-
-            // Spinner on item click listener
-            mySpinner
-                    .setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-                        @Override
-                        public void onItemSelected(AdapterView<?> arg0,
-                                                   View arg1, int position, long arg3) {
-                            // TODO Auto-generated method stub
-                            // Locate the textviews in activity_main.xml
-                            //TextView txtrank = (TextView) findViewById(R.id.rank);
-                            //TextView txtcountry = (TextView) findViewById(R.id.nombre);
-                            //TextView txtpopulation = (TextView) findViewById(R.id.population);
-
-                            // Set the text followed by the position
-                            //txtrank.setText("Rank : "  + world.get(position).getid());
-                            //txtcountry.setText("Country : "+ world.get(position).getgrupo());
-
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> arg0) {
-                            // TODO Auto-generated method stub
-                        }
-                    });
-        }
-
-    }
-
-
-    public class WorldPopulation {
-        private int id_grupo;
-        private String nombre;
-
-
-        public Integer getid() {
-            return id_grupo;
-        }
-
-        public void setid(String rank) {
-            this.id_grupo = id_grupo;
-        }
-
-        public String getgrupo() {
-            return nombre;
-        }
-
-        public void setgrupo(String nombre) {
-            this.nombre = nombre;
-        }
-
-
-    }
 
 
     class insert extends AsyncTask<String, String, String> {
@@ -213,7 +89,7 @@ public class agregaralumnos extends Activity {
 
                     try {
                         HttpClient httpclient = new DefaultHttpClient();
-                        HttpPost httppost = new HttpPost("http://192.168.2.9/proyectofinal/insertestudiante.php");
+                        HttpPost httppost = new HttpPost( MainActivity.URL+ "/proyectofinal/insertestudiante.php");
                         httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                         HttpResponse response = httpclient.execute(httppost);
                         HttpEntity entity = response.getEntity();
@@ -264,6 +140,7 @@ public class agregaralumnos extends Activity {
                     return null;
                 }
 
-            }}
+            }
+}
 
 

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends Activity implements OnClickListener{
-
+    public static String URL = "http://192.168.2.5";
     private EditText user, pass;
     private Button mSubmit, mRegister;
 
@@ -41,7 +41,7 @@ public class MainActivity extends Activity implements OnClickListener{
     // private static final String LOGIN_URL = "http://xxx.xxx.x.x:1234/webservice/login.php";
 
     //testing on Emulator:
-    private static final String LOGIN_URL = "http://192.168.2.9/webservice/login.php";
+    private static final String LOGIN_URL = URL + "/webservice/login.php";
 
     //testing from a real server:
     //private static final String LOGIN_URL = "http://www.yourdomain.com/webservice/login.php";
