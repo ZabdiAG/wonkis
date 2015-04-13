@@ -132,7 +132,7 @@ public class TetrisGrid implements ITetrisConstants  {
 
 	public void paint(Canvas canvas, Paint paint) {
 		//paint bg
-		paint.setColor(Color.GRAY);
+		paint.setColor(Color.argb(178,178,1781,178));
 		paint.setStyle(Paint.Style.FILL);
 		canvas.drawRect(mLeft, mTop, mRight, mBottom, paint);
 
@@ -145,7 +145,7 @@ public class TetrisGrid implements ITetrisConstants  {
 			t = mTop+(i/PLAYFIELD_COLS)*mTileH;
 			r = l+mTileW;
 			b = t+mTileH;
-			paint.setColor(Color.YELLOW);
+			paint.setColor(Color.WHITE);
 			paint.setStyle((mCells[i])?Paint.Style.FILL:Paint.Style.STROKE);
 			canvas.drawRect(l, t, r, b, paint);
 			//if(mCells[i])//more fancy graphics for occupied cells

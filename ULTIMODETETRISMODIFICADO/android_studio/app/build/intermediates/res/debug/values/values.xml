@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Alejandro%20Flores/AndroidStudioProjects/android_studio/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/var/www/html/git/wonkis/ULTIMODETETRISMODIFICADO/android_studio/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="Cancel">Cancelar</string>
     <string name="GameOver">Perdiste!</string>
